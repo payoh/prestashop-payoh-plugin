@@ -30,7 +30,7 @@ if (!defined('_PS_VERSION_')) {
 
 require_once 'services/LemonWayConfig.php';
 
-class Lemonway extends PaymentModule
+class Payoh extends PaymentModule
 {
     protected $config_form = false;
     protected $current_card = null;
@@ -51,7 +51,7 @@ class Lemonway extends PaymentModule
 
     public function __construct()
     {
-        $this->name = 'lemonway';
+        $this->name = 'payoh';
         $this->tab = 'payments_gateways';
         $this->version = '1.2.5';
         $this->author = 'SIRATECK';
@@ -64,7 +64,7 @@ class Lemonway extends PaymentModule
 
         parent::__construct();
 
-        $this->displayName = $this->l('Lemonway');
+        $this->displayName = $this->l('Payoh');
         $this->description = $this->l('Through its API, Lemon Way offers you state-of-the-art payment technology. Beyond
          their technological expertise, Lemon Way also offers a multitude of complementary regulation and management 
          services.');
@@ -187,37 +187,37 @@ class Lemonway extends PaymentModule
         }
 
         //API CONFIGURATION
-        Configuration::updateValue('LEMONWAY_API_LOGIN', '');
-        Configuration::updateValue('LEMONWAY_API_PASSWORD', '');
-        Configuration::updateValue('LEMONWAY_MERCHANT_ID', '');
-        Configuration::updateValue('LEMONWAY_DIRECTKIT_URL', '');
-        Configuration::updateValue('LEMONWAY_WEBKIT_URL', '');
-        Configuration::updateValue('LEMONWAY_DIRECTKIT_URL_TEST', '');
-        Configuration::updateValue('LEMONWAY_WEBKIT_URL_TEST', '');
-        Configuration::updateValue('LEMONWAY_IS_TEST_MODE', false);
+        Configuration::updateValue('PAYOH_API_LOGIN', '');
+        Configuration::updateValue('PAYOH_API_PASSWORD', '');
+        Configuration::updateValue('PAYOH_MERCHANT_ID', '');
+        Configuration::updateValue('PAYOH_DIRECTKIT_URL', '');
+        Configuration::updateValue('PAYOH_WEBKIT_URL', '');
+        Configuration::updateValue('PAYOH_DIRECTKIT_URL_TEST', '');
+        Configuration::updateValue('PAYOH_WEBKIT_URL_TEST', '');
+        Configuration::updateValue('PAYOH_IS_TEST_MODE', false);
         
         //METHOD CONFIGURATION
         Configuration::updateValue(
-            'LEMONWAY_CSS_URL',
-            'https://webkit.lemonway.fr/css/mercanet/mercanet_lw_custom.css'
+            'PAYOH_CSS_URL',
+            'https://webkit.payoh.fr/css/mercanet/mercanet_lw_custom.css'
         );
-        Configuration::updateValue('LEMONWAY_ONECLIC_ENABLED', false);
+        Configuration::updateValue('PAYOH_ONECLIC_ENABLED', false);
 
         include(dirname(__FILE__) . '/sql/install.php');
         
         //Prepare status values
-        $key = 'LEMONWAY_PENDING_OS';
+        $key = 'PAYOH_PENDING_OS';
         
-        $translationsAdminLemonway = array(
-            'en' => 'Lemonway',
-            'fr' => 'Lemonway'
+        $translationsAdminPayoh = array(
+            'en' => 'Payoh',
+            'fr' => 'Payoh'
         );
         
-        $this->installModuleTab('AdminLemonway', $translationsAdminLemonway, 0);
+        $this->installModuleTab('AdminPayoh', $translationsAdminPayoh, 0);
         
         $translationsStatus = array(
-            'en' => 'Pending payment validation from Lemonway',
-            'fr'=> 'En attente de validation par Lemonway'
+            'en' => 'Pending payment validation from Payoh',
+            'fr'=> 'En attente de validation par Payoh'
         );
 
         $translationsAdminMoneyOut = array(
@@ -225,8 +225,8 @@ class Lemonway extends PaymentModule
             'fr'=>'Virements bancaire'
         );
         
-        $adminLemonwayId = Db::getInstance()->getValue(
-            "SELECT `id_tab` FROM " . _DB_PREFIX_ . "tab WHERE `class_name`='AdminLemonway'"
+        $adminPayohId = Db::getInstance()->getValue(
+            "SELECT `id_tab` FROM " . _DB_PREFIX_ . "tab WHERE `class_name`='AdminPayoh'"
         );
         
         return parent::install() &&
@@ -235,30 +235,30 @@ class Lemonway extends PaymentModule
             $this->registerHook('payment') &&
             $this->registerHook('paymentReturn') &&
             $this->addStatus($key, $translationsStatus, 'orange') && //Add new Status
-            $this->installModuleTab('AdminMoneyOut', $translationsAdminMoneyOut, $adminLemonwayId);
+            $this->installModuleTab('AdminMoneyOut', $translationsAdminMoneyOut, $adminPayohId);
     }
 
     public function uninstall()
     {
         //API CONFIGURATION
-        Configuration::deleteByName('LEMONWAY_API_LOGIN');
-        Configuration::deleteByName('LEMONWAY_API_PASSWORD');
-        Configuration::deleteByName('LEMONWAY_MERCHANT_ID');
-        Configuration::deleteByName('LEMONWAY_DIRECTKIT_URL');
-        Configuration::deleteByName('LEMONWAY_WEBKIT_URL');
-        Configuration::deleteByName('LEMONWAY_DIRECTKIT_URL_TEST');
-        Configuration::deleteByName('LEMONWAY_WEBKIT_URL_TEST');
-        Configuration::deleteByName('LEMONWAY_IS_TEST_MODE');
+        Configuration::deleteByName('PAYOH_API_LOGIN');
+        Configuration::deleteByName('PAYOH_API_PASSWORD');
+        Configuration::deleteByName('PAYOH_MERCHANT_ID');
+        Configuration::deleteByName('PAYOH_DIRECTKIT_URL');
+        Configuration::deleteByName('PAYOH_WEBKIT_URL');
+        Configuration::deleteByName('PAYOH_DIRECTKIT_URL_TEST');
+        Configuration::deleteByName('PAYOH_WEBKIT_URL_TEST');
+        Configuration::deleteByName('PAYOH_IS_TEST_MODE');
 
         //METHOD CONFIGURATION
-        Configuration::deleteByName('LEMONWAY_CSS_URL');
-        Configuration::deleteByName('LEMONWAY_ONECLIC_ENABLED');
+        Configuration::deleteByName('PAYOH_CSS_URL');
+        Configuration::deleteByName('PAYOH_ONECLIC_ENABLED');
 
         //Do Not delete this configuration
-        //Configuration::deleteByName('LEMONWAY_PENDING_OS');
+        //Configuration::deleteByName('PAYOH_PENDING_OS');
 
         $this->uninstallModuleTab('AdminMoneyOut');
-        $this->uninstallModuleTab('AdminLemonway');
+        $this->uninstallModuleTab('AdminPayoh');
 
         include(dirname(__FILE__) . '/sql/uninstall.php');
 
@@ -267,12 +267,12 @@ class Lemonway extends PaymentModule
 
     public function moduleMktIsInstalled()
     {
-        return !(Module::isInstalled('lemonwaymkt') === false);
+        return !(Module::isInstalled('payohmkt') === false);
     }
 
     public function moduleMktIsEnabled()
     {
-        return !(Module::isEnabled('lemonwaymkt') === false);
+        return !(Module::isEnabled('payohmkt') === false);
     }
 
     /**
@@ -283,7 +283,7 @@ class Lemonway extends PaymentModule
         /**
         * If values have been submitted in the form, process.
         */
-        if (((bool)Tools::isSubmit('submitLemonwayModule')) == true) {
+        if (((bool)Tools::isSubmit('submitPayohModule')) == true) {
             $this->postProcess();
         }
 
@@ -308,7 +308,7 @@ class Lemonway extends PaymentModule
         $helper->allow_employee_form_lang = Configuration::get('PS_BO_ALLOW_EMPLOYEE_FORM_LANG', 0);
 
         $helper->identifier = $this->identifier;
-        $helper->submit_action = 'submitLemonwayModule';
+        $helper->submit_action = 'submitPayohModule';
         $helper->currentIndex = $this->context->link->getAdminLink('AdminModules', false)
         .'&configure='.$this->name.'&tab_module='.$this->tab.'&module_name='.$this->name;
         $helper->token = Tools::getAdminTokenLite('AdminModules');
@@ -347,7 +347,7 @@ class Lemonway extends PaymentModule
         $switch = array(
             'type' => 'switch',
             'label' => $this->l('Enable Oneclic'),
-            'name' => 'LEMONWAY_ONECLIC_ENABLED',
+            'name' => 'PAYOH_ONECLIC_ENABLED',
             'is_bool' => true,
             'desc' => $this->l('Display oneclic form on payment step'),
             'values' => array(
@@ -370,7 +370,7 @@ class Lemonway extends PaymentModule
             $switch = array(
                 'type' => 'select',
                 'label' => $this->l('Enable Oneclic'),
-                'name' => 'LEMONWAY_ONECLIC_ENABLED',
+                'name' => 'PAYOH_ONECLIC_ENABLED',
                 'is_bool' => true,
                 'desc' => $this->l('Display oneclic form on payment step'),
                 'options' => array(
@@ -395,7 +395,7 @@ class Lemonway extends PaymentModule
         $container['form']['input'][] = array(
             'col' => 6,
             'label' => $this->l('CSS URL'),
-            'name' => 'LEMONWAY_CSS_URL',
+            'name' => 'PAYOH_CSS_URL',
             'type' => 'text',
             'prefix' => '<i class="icon icon-css3"></i>',
             'is_number' => true,
@@ -422,13 +422,13 @@ class Lemonway extends PaymentModule
                         'type' => 'text',
                         'prefix' => '<i class="icon icon-user"></i>',
                         'desc' => $this->l('Production Api login'),
-                        'name' => 'LEMONWAY_API_LOGIN',
+                        'name' => 'PAYOH_API_LOGIN',
                         'label' => $this->l('API LOGIN'),
                     ),
                     array(
                         'col' => 3,
                         'type' => 'password',
-                        'name' => 'LEMONWAY_API_PASSWORD',
+                        'name' => 'PAYOH_API_PASSWORD',
                         'label' => $this->l('API Password'),
                     ),
                     array(
@@ -436,8 +436,8 @@ class Lemonway extends PaymentModule
                         'type' => 'text',
                         'prefix' => '<i class="icon icon-google-wallet"></i>',
                         'desc' => $this->l('It\'s the wallet where your payments are credited. 
-                            You must to create it in BO Lemonway'),
-                        'name' => 'LEMONWAY_MERCHANT_ID',
+                            You must to create it in BO Payoh'),
+                        'name' => 'PAYOH_MERCHANT_ID',
                         'label' => $this->l('Wallet Merchant ID'),
                     ),
                     array(
@@ -445,7 +445,7 @@ class Lemonway extends PaymentModule
                         'type' => 'text',
                         'prefix' => '<i class="icon icon-cloud-upload"></i>',
                         'desc' => $this->l(''),
-                        'name' => 'LEMONWAY_DIRECTKIT_URL',
+                        'name' => 'PAYOH_DIRECTKIT_URL',
                         'label' => $this->l('DIRECTKIT XML URL'),
                     ),
                     array(
@@ -453,7 +453,7 @@ class Lemonway extends PaymentModule
                         'type' => 'text',
                         'prefix' => '<i class="icon icon-cloud-upload"></i>',
                         'desc' => $this->l(''),
-                        'name' => 'LEMONWAY_WEBKIT_URL',
+                        'name' => 'PAYOH_WEBKIT_URL',
                         'label' => $this->l('WEBKIT URL'),
                     ),
                     array(
@@ -461,7 +461,7 @@ class Lemonway extends PaymentModule
                         'type' => 'text',
                         'prefix' => '<i class="icon icon-cloud-upload"></i>',
                         'desc' => $this->l(''),
-                        'name' => 'LEMONWAY_DIRECTKIT_URL_TEST',
+                        'name' => 'PAYOH_DIRECTKIT_URL_TEST',
                         'label' => $this->l('DIRECTKIT XML URL TEST'),
                     ),
                     array(
@@ -469,7 +469,7 @@ class Lemonway extends PaymentModule
                         'type' => 'text',
                         'prefix' => '<i class="icon icon-cloud-upload"></i>',
                         'desc' => $this->l(''),
-                        'name' => 'LEMONWAY_WEBKIT_URL_TEST',
+                        'name' => 'PAYOH_WEBKIT_URL_TEST',
                         'label' => $this->l('WEBKIT URL TEST'),
                     ),
                 ),
@@ -482,7 +482,7 @@ class Lemonway extends PaymentModule
         $switch = array(
             'type' => 'switch',
             'label' => $this->l('Enable test mode'),
-            'name' => 'LEMONWAY_IS_TEST_MODE',
+            'name' => 'PAYOH_IS_TEST_MODE',
             'is_bool' => true,
             'desc' => $this->l('Call requests in test API Endpoint'),
             'values' => array(
@@ -506,7 +506,7 @@ class Lemonway extends PaymentModule
             $switch = array(
                 'type' => 'select',
                 'label' => $this->l('Enable test mode'),
-                'name' => 'LEMONWAY_IS_TEST_MODE',
+                'name' => 'PAYOH_IS_TEST_MODE',
                 'is_bool' => true,
                 'desc' => $this->l('Call requests in test API Endpoint'),
                 'options' => array(
@@ -537,16 +537,16 @@ class Lemonway extends PaymentModule
     protected function getConfigFormValues()
     {
         return array(
-            'LEMONWAY_API_LOGIN' => Configuration::get('LEMONWAY_API_LOGIN', null),
-            'LEMONWAY_API_PASSWORD' => Configuration::get('LEMONWAY_API_PASSWORD', null),
-            'LEMONWAY_MERCHANT_ID' => Configuration::get('LEMONWAY_MERCHANT_ID', null),
-            'LEMONWAY_DIRECTKIT_URL' => Configuration::get('LEMONWAY_DIRECTKIT_URL', null),
-            'LEMONWAY_WEBKIT_URL' => Configuration::get('LEMONWAY_WEBKIT_URL', null),
-            'LEMONWAY_DIRECTKIT_URL_TEST' => Configuration::get('LEMONWAY_DIRECTKIT_URL_TEST', null),
-            'LEMONWAY_WEBKIT_URL_TEST' => Configuration::get('LEMONWAY_WEBKIT_URL_TEST', null),
-            'LEMONWAY_IS_TEST_MODE' => Configuration::get('LEMONWAY_IS_TEST_MODE', null),
-            'LEMONWAY_CSS_URL' => Configuration::get('LEMONWAY_CSS_URL', null),
-            'LEMONWAY_ONECLIC_ENABLED' => Configuration::get('LEMONWAY_ONECLIC_ENABLED', null),
+            'PAYOH_API_LOGIN' => Configuration::get('PAYOH_API_LOGIN', null),
+            'PAYOH_API_PASSWORD' => Configuration::get('PAYOH_API_PASSWORD', null),
+            'PAYOH_MERCHANT_ID' => Configuration::get('PAYOH_MERCHANT_ID', null),
+            'PAYOH_DIRECTKIT_URL' => Configuration::get('PAYOH_DIRECTKIT_URL', null),
+            'PAYOH_WEBKIT_URL' => Configuration::get('PAYOH_WEBKIT_URL', null),
+            'PAYOH_DIRECTKIT_URL_TEST' => Configuration::get('PAYOH_DIRECTKIT_URL_TEST', null),
+            'PAYOH_WEBKIT_URL_TEST' => Configuration::get('PAYOH_WEBKIT_URL_TEST', null),
+            'PAYOH_IS_TEST_MODE' => Configuration::get('PAYOH_IS_TEST_MODE', null),
+            'PAYOH_CSS_URL' => Configuration::get('PAYOH_CSS_URL', null),
+            'PAYOH_ONECLIC_ENABLED' => Configuration::get('PAYOH_ONECLIC_ENABLED', null),
         );
     }
 
@@ -560,11 +560,11 @@ class Lemonway extends PaymentModule
         foreach (array_keys($form_values) as $key) {
              $value = Tools::getValue($key);
 
-            if ($key == 'LEMONWAY_API_PASSWORD' && trim($value) == "") {
+            if ($key == 'PAYOH_API_PASSWORD' && trim($value) == "") {
                 continue;
             }
 
-            if ($key != 'LEMONWAY_API_PASSWORD') {
+            if ($key != 'PAYOH_API_PASSWORD') {
                 $value = trim($value);
             }
 
@@ -655,7 +655,7 @@ class Lemonway extends PaymentModule
     public function getCustomerCard($id_customer)
     {
         if (is_null($this->current_card)) {
-            $query = 'SELECT * FROM `' . _DB_PREFIX_ . 'lemonway_oneclic` lo WHERE lo.`id_customer` = '
+            $query = 'SELECT * FROM `' . _DB_PREFIX_ . 'payoh_oneclic` lo WHERE lo.`id_customer` = '
             . (int)pSQL($id_customer);
             $this->current_card = Db::getInstance()->getRow($query);
         }
@@ -681,7 +681,7 @@ class Lemonway extends PaymentModule
         $data['id_customer'] = (int)$data['id_customer'];
         $data['id_card'] = (int)$data['id_card'];
 
-        Db::getInstance()->insert('lemonway_oneclic', $data, false, true, Db::REPLACE);
+        Db::getInstance()->insert('payoh_oneclic', $data, false, true, Db::REPLACE);
     }
     
     public function getWalletDetails($wallet)
@@ -701,7 +701,7 @@ class Lemonway extends PaymentModule
     public function getWkToken($id_cart)
     {
         return Db::getInstance()->getValue(
-            'SELECT `wktoken` FROM `' . _DB_PREFIX_ . 'lemonway_wktoken` lw WHERE lw.`id_cart` = ' . (int)pSQL($id_cart)
+            'SELECT `wktoken` FROM `' . _DB_PREFIX_ . 'payoh_wktoken` lw WHERE lw.`id_cart` = ' . (int)pSQL($id_cart)
         );
     }
     
@@ -720,12 +720,12 @@ class Lemonway extends PaymentModule
         $wkToken = $this->generateUniqueCartId($id_cart);
         
         //Default  update query
-        $query = 'UPDATE `' . _DB_PREFIX_ . 'lemonway_wktoken` SET `wktoken` = \'' . pSQL($wkToken) .
+        $query = 'UPDATE `' . _DB_PREFIX_ . 'payoh_wktoken` SET `wktoken` = \'' . pSQL($wkToken) .
          "' WHERE `id_cart` = " . (int)pSQL($id_cart);
         
         //If cart haven't wkToken we insert it
         if (!$this->checkIfCartHasWkToken($id_cart)) {
-            $query = 'INSERT INTO `' . _DB_PREFIX_ . 'lemonway_wktoken` (`id_cart`,`wktoken`) VALUES (\''
+            $query = 'INSERT INTO `' . _DB_PREFIX_ . 'payoh_wktoken` (`id_cart`,`wktoken`) VALUES (\''
                 . (int)pSQL($id_cart) . '\',\'' . pSQL($wkToken) . '\') ';
         }
 
@@ -742,7 +742,7 @@ class Lemonway extends PaymentModule
     public function getCartIdFromToken($wktoken)
     {
         if ($id_cart = Db::getInstance()->getValue(
-            'SELECT `id_cart` FROM `' . _DB_PREFIX_ . 'lemonway_wktoken` lw WHERE lw.`wktoken` = \''
+            'SELECT `id_cart` FROM `' . _DB_PREFIX_ . 'payoh_wktoken` lw WHERE lw.`wktoken` = \''
             . pSQL($wktoken) . "'"
         )) {
             return $id_cart;
