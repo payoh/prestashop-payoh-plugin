@@ -61,7 +61,7 @@ class WalletCore extends ObjectModel
     * @see ObjectModel::$definition
     */
     public static $definition = array(
-        'table' => 'lemonway_wallet',
+        'table' => 'payoh_wallet',
         'primary' => 'id_wallet',
         'multilang' => false,
         'multilang_shop' => false,
@@ -229,7 +229,7 @@ class WalletCore extends ObjectModel
 
     public function getByCustomerId($id_customer)
     {
-        $query = 'SELECT * FROM `' . _DB_PREFIX_ . 'lemonway_wallet` lw ' .
+        $query = 'SELECT * FROM `' . _DB_PREFIX_ . 'payoh_wallet` lw ' .
         'WHERE lw.`id_customer` = ' . (int)pSQL($id_customer);
         $result = Db::getInstance()->getRow($query);
 

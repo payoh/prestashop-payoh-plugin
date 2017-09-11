@@ -23,8 +23,8 @@
  * International Registered Trademark & Property of PrestaShop SA
  *}
 
-<div class="">{l s='Holder' mod='lemonway'} {$holder|escape:'htmlall':'UTF-8'}</div>
-<div class="">{l s='Wallet' mod='lemonway'}: {$wallet|escape:'htmlall':'UTF-8'}</div>
-<div class="">{l s='Balance' mod='lemonway'}: {$bal|escape:'htmlall':'UTF-8'}</div>
-<div class="">{l s='Status' mod='lemonway'} {$status|escape:'htmlall':'UTF-8'}</div>
-<div class="">{$cnt_ibans|escape:'htmlall':'UTF-8'} {l s='Ibans' mod='lemonway'}</div>
+<div class="">{l s='Holder' mod='payoh'} {$holder|escape:'htmlall':'UTF-8'}</div>
+<div class="">{l s='Wallet' mod='payoh'}: {$wallet|escape:'htmlall':'UTF-8'}</div>
+<div class="">{l s='Balance' mod='payoh'}: {$bal|escape:'htmlall':'UTF-8'}</div>
+<div class="">{l s='Status' mod='payoh'} {$status|escape:'htmlall':'UTF-8'}</div>
+<div class="">{$cnt_ibans|escape:'htmlall':'UTF-8'} {l s='Ibans' mod='payoh'}</div>

@@ -26,7 +26,7 @@
 
 $sql = array();
 
-$sql[] = 'CREATE TABLE IF NOT EXISTS `'._DB_PREFIX_.'lemonway_oneclic` (
+$sql[] = 'CREATE TABLE IF NOT EXISTS `'._DB_PREFIX_.'payoh_oneclic` (
     `id_oneclic` int(11) NOT NULL AUTO_INCREMENT,
 	`id_customer` int(11) NOT NULL,
 	`id_card` int(11) NOT NULL,
@@ -38,7 +38,7 @@ $sql[] = 'CREATE TABLE IF NOT EXISTS `'._DB_PREFIX_.'lemonway_oneclic` (
     PRIMARY KEY  (`id_oneclic`)
 ) ENGINE='._MYSQL_ENGINE_.' DEFAULT CHARSET=utf8;';
 
-$sql[] = 'CREATE TABLE IF NOT EXISTS `'._DB_PREFIX_.'lemonway_moneyout` (
+$sql[] = 'CREATE TABLE IF NOT EXISTS `'._DB_PREFIX_.'payoh_moneyout` (
     `id_moneyout` int(11) NOT NULL AUTO_INCREMENT,
 	`id_lw_wallet` varchar(255) NOT NULL,
 	`id_customer` int(11) NOT NULL DEFAULT 0,
@@ -54,7 +54,7 @@ $sql[] = 'CREATE TABLE IF NOT EXISTS `'._DB_PREFIX_.'lemonway_moneyout` (
     PRIMARY KEY  (`id_moneyout`)
 ) ENGINE='._MYSQL_ENGINE_.' DEFAULT CHARSET=utf8;';
 
-$sql[] = 'CREATE TABLE IF NOT EXISTS `'._DB_PREFIX_.'lemonway_iban` (
+$sql[] = 'CREATE TABLE IF NOT EXISTS `'._DB_PREFIX_.'payoh_iban` (
     `id_iban` int(11) NOT NULL AUTO_INCREMENT,
 	`id_lw_iban` int(11) NOT NULL,
 	`id_customer` int(11) NOT NULL,
@@ -72,9 +72,9 @@ $sql[] = 'CREATE TABLE IF NOT EXISTS `'._DB_PREFIX_.'lemonway_iban` (
 	UNIQUE KEY (`id_lw_iban`)
 ) ENGINE='._MYSQL_ENGINE_.' DEFAULT CHARSET=utf8;';
 
-$sql[] = "CREATE TABLE IF NOT EXISTS `"._DB_PREFIX_."lemonway_wallet` (
+$sql[] = "CREATE TABLE IF NOT EXISTS `"._DB_PREFIX_."payoh_wallet` (
   `id_wallet` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Wallet ID',
-  `id_lw_wallet` varchar(255) NOT NULL COMMENT 'Lemonway Wallet ID',
+  `id_lw_wallet` varchar(255) NOT NULL COMMENT 'Payoh Wallet ID',
   `id_customer` int(11) NOT NULL COMMENT 'Customer ID',
   `is_admin` smallint(6) NOT NULL COMMENT 'Is Admin',
   `customer_email` varchar(255) NOT NULL COMMENT 'Email',
@@ -107,7 +107,7 @@ $sql[] = "CREATE TABLE IF NOT EXISTS `"._DB_PREFIX_."lemonway_wallet` (
   UNIQUE KEY (`id_lw_wallet`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Wallet Table' ;";
 
-$sql[] = 'CREATE TABLE IF NOT EXISTS `'._DB_PREFIX_.'lemonway_wktoken` (
+$sql[] = 'CREATE TABLE IF NOT EXISTS `'._DB_PREFIX_.'payoh_wktoken` (
 			    `id_cart_wktoken` int(11) NOT NULL AUTO_INCREMENT,
 				`id_cart` int(11) NOT NULL,
 				`wktoken` varchar(255) NOT NULL,

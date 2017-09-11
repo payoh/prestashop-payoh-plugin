@@ -33,20 +33,20 @@ require_once 'models/Operation.php';
 require_once 'models/SddMandate.php';
 require_once 'models/Wallet.php';
 require_once 'ApiResponse.php';
-require_once 'LemonWayConfig.php';
+require_once 'PayohConfig.php';
 
-class LemonWayKit
+class PayohKit
 {
     private static $printInputAndOutputXml = false;
     
     private static function accessConfig()
     {
         return array(
-            'directKitUrl' => LemonWayConfig::getDirectkitUrl(),
-            'webkitUrl' => LemonWayConfig::getWebkitUrl(),
-            'isTestMode' => LemonWayConfig::isTestMode(),
-            'wlLogin' => LemonWayConfig::getApiLogin(),
-            'wlPass' => LemonWayConfig::getApiPassword(),
+            'directKitUrl' => PayohConfig::getDirectkitUrl(),
+            'webkitUrl' => PayohConfig::getWebkitUrl(),
+            'isTestMode' => PayohConfig::isTestMode(),
+            'wlLogin' => PayohConfig::getApiLogin(),
+            'wlPass' => PayohConfig::getApiPassword(),
             'language' => 'en'
         ); // @TODO get language and filter with available languages in lw.
     }
@@ -418,14 +418,14 @@ class LemonWayKit
                 
                 case 403:
                     throw new Exception("IP is not allowed to access Lemon Way's API, 
-                        please contact support@lemonway.fr", 403);
+                        please contact support@payoh.me", 403);
                  
                 case 404:
                     throw new Exception("Check that the access URLs are correct. If yes, 
-                        please contact support@lemonway.fr", 404);
+                        please contact support@payoh.me", 404);
                 
                 case 500:
-                    throw new Exception("Lemon Way internal server error, please contact support@lemonway.fr", 500);
+                    throw new Exception("Payoh internal server error, please contact support@payoh.me", 500);
                 
                 default:
                     break;

@@ -24,19 +24,19 @@
  *}
 
 {if (isset($status) == true) && ($status == 'ok')}
-<h3>{l s='Your order on %s is complete.' sprintf=$shop_name mod='lemonway'}</h3>
+<h3>{l s='Your order on %s is complete.' sprintf=$shop_name mod='payoh'}</h3>
 <p>
-	<br />- {l s='Amount' mod='lemonway'} : <span class="price"><strong>{$total|escape:'htmlall':'UTF-8'}</strong></span>
-	<br />- {l s='Reference' mod='lemonway'} : <span class="reference"><strong>{$reference|escape:'html':'UTF-8'}</strong></span>
-	<br /><br />{l s='An email has been sent with this information.' mod='lemonway'}
-	<br /><br />{l s='If you have questions, comments or concerns, please contact our' mod='lemonway'} <a href="{$link->getPageLink('contact', true)|escape:'html':'UTF-8'}">{l s='expert customer support team.' mod='lemonway'}</a>
+	<br />- {l s='Amount' mod='payoh'} : <span class="price"><strong>{$total|escape:'htmlall':'UTF-8'}</strong></span>
+	<br />- {l s='Reference' mod='payoh'} : <span class="reference"><strong>{$reference|escape:'html':'UTF-8'}</strong></span>
+	<br /><br />{l s='An email has been sent with this information.' mod='payoh'}
+	<br /><br />{l s='If you have questions, comments or concerns, please contact our' mod='payoh'} <a href="{$link->getPageLink('contact', true)|escape:'html':'UTF-8'}">{l s='expert customer support team.' mod='payoh'}</a>
 </p>
 {else}
-<h3>{l s='Your order on %s has not been accepted.' sprintf=$shop_name mod='lemonway'}</h3>
+<h3>{l s='Your order on %s has not been accepted.' sprintf=$shop_name mod='payoh'}</h3>
 <p>
-	<br />- {l s='Reference' mod='lemonway'} <span class="reference"> <strong>{$reference|escape:'html':'UTF-8'}</strong></span>
-	<br /><br />{l s='Please, try to order again.' mod='lemonway'}
-	<br /><br />{l s='If you have questions, comments or concerns, please contact our' mod='lemonway'} <a href="{$link->getPageLink('contact', true)|escape:'html':'UTF-8'}">{l s='expert customer support team.' mod='lemonway'}</a>
+	<br />- {l s='Reference' mod='payoh'} <span class="reference"> <strong>{$reference|escape:'html':'UTF-8'}</strong></span>
+	<br /><br />{l s='Please, try to order again.' mod='payoh'}
+	<br /><br />{l s='If you have questions, comments or concerns, please contact our' mod='payoh'} <a href="{$link->getPageLink('contact', true)|escape:'html':'UTF-8'}">{l s='expert customer support team.' mod='payoh'}</a>
 </p>
 {/if}
 <hr />

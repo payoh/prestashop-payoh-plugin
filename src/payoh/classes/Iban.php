@@ -43,7 +43,7 @@ class IbanCore extends ObjectModel
      * @see ObjectModel::$definition
      */
     public static $definition = array(
-        'table' => 'lemonway_iban',
+        'table' => 'payoh_iban',
         'primary' => 'id_iban',
         'multilang' => false,
         'multilang_shop' => false,
@@ -113,7 +113,7 @@ class IbanCore extends ObjectModel
      */
     public static function getCustomerIbans($id_customer)
     {
-        $sql = 'SELECT * FROM `' . _DB_PREFIX_ . 'lemonway_iban` iban ' .
+        $sql = 'SELECT * FROM `' . _DB_PREFIX_ . 'payoh_iban` iban ' .
         'WHERE iban.`id_customer` = ' . pSQL($id_customer);
         $sql .= ' ORDER BY iban.`date_add` DESC';
         

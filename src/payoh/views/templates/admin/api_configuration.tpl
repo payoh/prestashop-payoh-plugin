@@ -24,7 +24,7 @@
  *}
 
 <div class="panel">
-	<div class="row Lemonway-header">
+	<div class="row Payoh-header">
 		<svg class="col-xs-6 col-md-3 text-center" id="payment-logo"  width="275px" height="65px" viewBox="0 0 275 65" x="0px" y="0px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve">
 			<g id="Homepage" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
 			<g id="Desktop-HD" sketch:type="MSArtboardGroup" transform="translate(-94.000000, -648.000000)" fill="#57ED7D"> 
@@ -35,50 +35,50 @@
 			</g>
 		</svg>
 		<div class="col-xs-6 col-md-6 text-center text-muted">
-			{l s='Secured payment solutions for Internet marketplaces, eCommerce, and crowdfunding. Payment API. BackOffice management. Compliance. Regulatory reporting.' mod='lemonway'}
+			{l s='Secured payment solutions for Internet marketplaces, eCommerce, and crowdfunding. Payment API. BackOffice management. Compliance. Regulatory reporting.' mod='payoh'}
 		</div>
 		<div class="col-xs-12 col-md-3 text-center">
-			<a href="https://www.lemonway.fr/contact.html" target="_blank" class="btn btn-primary" id="create-account-btn">{l s='Create an account' mod='lemonway'}</a><br />
+			<a href="https://payoh.me/contact.html" target="_blank" class="btn btn-primary" id="create-account-btn">{l s='Create an account' mod='payoh'}</a><br />
 		</div>
 	</div>
 
 	<hr />
 	
-	<div class="Lemonway-content">
+	<div class="Payoh-content">
 		<div class="row">
 			<div class="col-md-6">
-				<h5>{l s='A COMPLETE SOLUTION' mod='lemonway'}</h5>
+				<h5>{l s='A COMPLETE SOLUTION' mod='payoh'}</h5>
 				<ul class="ul-spaced">
 					<li>
-						<strong>{l s='PAYMENT API' mod='lemonway'}:</strong>
-						{l s='Create your payment accounts, escrow accounts, or Wallets. Secure your payments with 3D Secure. Plan your transfers. Digitally sign your contracts.' mod='lemonway'}
+						<strong>{l s='PAYMENT API' mod='payoh'}:</strong>
+						{l s='Create your payment accounts, escrow accounts, or Wallets. Secure your payments with 3D Secure. Plan your transfers. Digitally sign your contracts.' mod='payoh'}
 					</li>
 					
 					<li>
-						<strong>{l s='FOLLOW YOUR FLOWS' mod='lemonway'}:</strong>
-						{l s='Control your turnover, manage your cost accounting, export all your payment transactions at any time and in real-time. Manage documents linked to a payment account.' mod='lemonway'}
+						<strong>{l s='FOLLOW YOUR FLOWS' mod='payoh'}:</strong>
+						{l s='Control your turnover, manage your cost accounting, export all your payment transactions at any time and in real-time. Manage documents linked to a payment account.' mod='payoh'}
 					</li>
 					
 					<li>
-						<strong>{l s='SECURE FUNDS' mod='lemonway'}:</strong>
-						{l s='Lemon Way is a payment institution acredited by the ACPR (French Prudential Supervisory Authority) that specializes in the collection of money for third parties, and the holding of funds in escrow accounts.' mod='lemonway'}
+						<strong>{l s='SECURE FUNDS' mod='payoh'}:</strong>
+						{l s='Lemon Way is a payment institution acredited by the ACPR (French Prudential Supervisory Authority) that specializes in the collection of money for third parties, and the holding of funds in escrow accounts.' mod='payoh'}
 					</li>
 				</ul>
 			</div>
 			
 			<div class="col-md-6">
-				<h5>{l s='PAYMENT FOR ANY ACTIVITY' mod='lemonway'}</h5>
+				<h5>{l s='PAYMENT FOR ANY ACTIVITY' mod='payoh'}</h5>
 				<dl class="list-unstyled">
-					<dt>{l s='MARKETPLACES' mod='lemonway'}</dt>
-					<dd>{l s='Lemon Way manages the on-boarding of your new merchants, monitors your payment flows, secures undistributed funds, and holds them in an appropriate account.' mod='lemonway'}</dd>
-					<dt>{l s='CROWDFUNDING' mod='lemonway'}</dt>
-					<dd>{l s='Lemon Way is experienced in lending based crowdfunding, equity based crowdfunding, and in donation and reward based crowdfunding. Drive your business in Europe with our EUR, GBP, and CHF solutions.' mod='lemonway'}</dd>
-					<dt>{l s='E-COMMMERCE' mod='lemonway'}</dt>
-					<dd>{l s='Accept multiple payment methods. Add security to your payments when needed with 3D Secure. Increase your revenue and reduce your fraud and chargeback rates.' mod='lemonway'}</dd>
-					<dt>{l s='MOBILE PAYMENT' mod='lemonway'}</dt>
-					<dd>{l s='Launch your mobile innovations with smartphone payment, pay in a click with saved bank card numbers, and streamline your payment methods with our technology.' mod='lemonway'}</dd>
+					<dt>{l s='MARKETPLACES' mod='payoh'}</dt>
+					<dd>{l s='Lemon Way manages the on-boarding of your new merchants, monitors your payment flows, secures undistributed funds, and holds them in an appropriate account.' mod='payoh'}</dd>
+					<dt>{l s='CROWDFUNDING' mod='payoh'}</dt>
+					<dd>{l s='Lemon Way is experienced in lending based crowdfunding, equity based crowdfunding, and in donation and reward based crowdfunding. Drive your business in Europe with our EUR, GBP, and CHF solutions.' mod='payoh'}</dd>
+					<dt>{l s='E-COMMMERCE' mod='payoh'}</dt>
+					<dd>{l s='Accept multiple payment methods. Add security to your payments when needed with 3D Secure. Increase your revenue and reduce your fraud and chargeback rates.' mod='payoh'}</dd>
+					<dt>{l s='MOBILE PAYMENT' mod='payoh'}</dt>
+					<dd>{l s='Launch your mobile innovations with smartphone payment, pay in a click with saved bank card numbers, and streamline your payment methods with our technology.' mod='payoh'}</dd>
 				</dl>
-				<a href="https://www.lemonway.fr" target="_blank">{l s='More info...' mod='lemonway'}</a>
+				<a href="https://payoh.me" target="_blank">{l s='More info...' mod='payoh'}</a>
 			</div>
 		</div>
 
@@ -86,12 +86,12 @@
 		
 		<div class="row">
 			<div class="col-md-12">
-				<p class="text-muted">{l s='We accept many payment methods . Visa, MasterCard, but also checks and SEPA transfers ...' mod='lemonway'}</p>
+				<p class="text-muted">{l s='We accept many payment methods . Visa, MasterCard, but also checks and SEPA transfers ...' mod='payoh'}</p>
 				
 				<div class="row">
 					<img src="{$module_dir|escape:'html':'UTF-8'}views/img/paiement-mode.jpg" class="col-md-3" id="payment-logo" />
 					<div class="col-md-9 text-center">
-						<h6>{l s='For more information, call +33 1 48 18 19 30' mod='lemonway'} {l s='or' mod='lemonway'} <a href="mailto:contact@lemonway.fr">contact@lemonway.fr</a></h6>
+						<h6>{l s='For more information, call +33 1 48 18 19 30' mod='payoh'} {l s='or' mod='payoh'} <a href="mailto:contact@payoh.me">contact@payoh.me</a></h6>
 					</div>
 				</div>
 			</div>

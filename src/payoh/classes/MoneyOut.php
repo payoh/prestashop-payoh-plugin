@@ -42,7 +42,7 @@ class MoneyOut extends ObjectModel
     * @see ObjectModel::$definition
     */
     public static $definition = array(
-        'table' => 'lemonway_moneyout',
+        'table' => 'payoh_moneyout',
         'primary' => 'id_moneyout',
         'multilang' => false,
         'multilang_shop' => false,
@@ -115,7 +115,7 @@ class MoneyOut extends ObjectModel
             $field_owner = 'id_employee';
         }
 
-        $sql = 'SELECT * FROM `' . _DB_PREFIX_ . 'lemonway_moneyout` wt WHERE wt.`' . pSQL($field_owner) . '` = ';
+        $sql = 'SELECT * FROM `' . _DB_PREFIX_ . 'payoh_moneyout` wt WHERE wt.`' . pSQL($field_owner) . '` = ';
         $sql .= (int)pSQL($id_customer) . ' ORDER BY wt.`date_add` DESC';
         
         if ($limit > 0) {

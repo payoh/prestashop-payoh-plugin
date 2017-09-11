@@ -32,67 +32,67 @@
 	border-top-left-radius: 0;
 }
 
-.Lemonway-header .text-branded,
-.Lemonway-content .text-branded {
+.Payoh-header .text-branded,
+.Payoh-content .text-branded {
 	color: #00aff0;
 }
 
-.Lemonway-header h4,
-.Lemonway-content h4,
-.Lemonway-content h5 {
+.Payoh-header h4,
+.Payoh-content h4,
+.Payoh-content h5 {
 	margin: 2px 0;
 	color: #00aff0;
 	font-size: 1.8em;
 }
 
-.Lemonway-header h4 {
+.Payoh-header h4 {
 	margin-top: 5px;
 }
 
-.Lemonway-header .col-md-6 {
+.Payoh-header .col-md-6 {
 	margin-top: 18px;
 }
 
-.Lemonway-content h4 {
+.Payoh-content h4 {
 	margin-bottom: 10px;
 }
 
-.Lemonway-content h5 {
+.Payoh-content h5 {
 	font-size: 1.4em;
 	margin-bottom: 10px;
 }
 
-.Lemonway-content h6 {
+.Payoh-content h6 {
 	font-size: 1.3em;
 	margin: 1px 0 4px 0;
 }
 
-.Lemonway-header > .col-md-4 {
+.Payoh-header > .col-md-4 {
 	height: 65px;
 	vertical-align: middle;
 	border-left: 1px solid #ddd;
 }
 
-.Lemonway-header > .col-md-4:first-child {
+.Payoh-header > .col-md-4:first-child {
 	border-left: none;
 }
 
-.Lemonway-header #create-account-btn {
+.Payoh-header #create-account-btn {
 	margin-top: 14px;
 }
 
-.Lemonway-content dd + dt {
+.Payoh-content dd + dt {
 	margin-top: 5px;
 }
 
-.Lemonway-content ul {
+.Payoh-content ul {
 	padding-left: 15px;
 }
 
-.Lemonway-content .ul-spaced li {
+.Payoh-content .ul-spaced li {
 	margin-bottom: 5px;
 }
 
-.icon-AdminLemonway:before {
+.icon-AdminPayoh:before {
 	content: "\f094";
 }

@@ -24,7 +24,7 @@
  *}
 
 <div>
-	<h3>{l s='An error occurred' mod='lemonway'}:</h3>
+	<h3>{l s='An error occurred' mod='payoh'}:</h3>
 	<ul class="alert alert-danger">
 		{foreach from=$errors item='error'}
 			<li>{$error|escape:'htmlall':'UTF-8'}.</li>

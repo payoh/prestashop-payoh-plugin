@@ -24,18 +24,18 @@
  * International Registered Trademark & Property of PrestaShop SA
 */
 
-class LemonWayConfig
+class PayohConfig
 {
     public static function isTestMode()
     {
-        return (bool)Configuration::get('LEMONWAY_IS_TEST_MODE', null);
+        return (bool)Configuration::get('PAYOH_IS_TEST_MODE', null);
     }
     
     public static function getDirectkitUrl()
     {
-        $url = Configuration::get('LEMONWAY_DIRECTKIT_URL', null);
-        if (LemonWayConfig::isTestMode()) {
-            $url = Configuration::get('LEMONWAY_DIRECTKIT_URL_TEST', null);
+        $url = Configuration::get('PAYOH_DIRECTKIT_URL', null);
+        if (PayohConfig::isTestMode()) {
+            $url = Configuration::get('PAYOH_DIRECTKIT_URL_TEST', null);
         }
 
         return rtrim($url, '/');
@@ -43,9 +43,9 @@ class LemonWayConfig
     
     public static function getWebkitUrl()
     {
-        $url = Configuration::get('LEMONWAY_WEBKIT_URL', null);
-        if (LemonWayConfig::isTestMode()) {
-            $url = Configuration::get('LEMONWAY_WEBKIT_URL_TEST', null);
+        $url = Configuration::get('PAYOH_WEBKIT_URL', null);
+        if (PayohConfig::isTestMode()) {
+            $url = Configuration::get('PAYOH_WEBKIT_URL_TEST', null);
         }
 
         return rtrim($url, '/');
@@ -53,26 +53,26 @@ class LemonWayConfig
     
     public static function getWalletMerchantId()
     {
-        return Configuration::get('LEMONWAY_MERCHANT_ID', null);
+        return Configuration::get('PAYOH_MERCHANT_ID', null);
     }
     
     public static function getApiLogin()
     {
-        return Configuration::get('LEMONWAY_API_LOGIN', null);
+        return Configuration::get('PAYOH_API_LOGIN', null);
     }
     
     public static function getApiPassword()
     {
-        return Configuration::get('LEMONWAY_API_PASSWORD', null);
+        return Configuration::get('PAYOH_API_PASSWORD', null);
     }
     
     public static function getCssUrl()
     {
-        return Configuration::get('LEMONWAY_CSS_URL', null);
+        return Configuration::get('PAYOH_CSS_URL', null);
     }
     
     public static function getOneclicEnabled()
     {
-        return Configuration::get('LEMONWAY_ONECLIC_ENABLED', null);
+        return Configuration::get('PAYOH_ONECLIC_ENABLED', null);
     }
 }

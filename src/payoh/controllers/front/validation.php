@@ -24,12 +24,12 @@
  * International Registered Trademark & Property of PrestaShop SA
 */
 
-class LemonwayValidationModuleFrontController extends ModuleFrontController
+class PayohValidationModuleFrontController extends ModuleFrontController
 {
     public function __construct()
     {
         parent::__construct();
-        require_once _PS_MODULE_DIR_ . $this->module->name . '/services/LemonWayKit.php';
+        require_once _PS_MODULE_DIR_ . $this->module->name . '/services/PayohKit.php';
     }
     
     /**
@@ -58,12 +58,12 @@ class LemonwayValidationModuleFrontController extends ModuleFrontController
         $action = Tools::getValue('action');
         $cart_id = $this->module->getCartIdFromToken(Tools::getValue('response_wkToken'));
         
-        if ($this->isGet()) { //Is redirection from Lemonway
+        if ($this->isGet()) { //Is redirection from Payoh
             if ((Tools::isSubmit('secure_key') == false)) {
                 die;
             }
 
-            Tools::redirect($this->context->link->getModuleLink('lemonway', 'confirmation', array(
+            Tools::redirect($this->context->link->getModuleLink('payoh', 'confirmation', array(
                 'action' => $action,
                 'secure_key' => Tools::getValue('secure_key'),
                 'cart_id'=> $cart_id
@@ -196,8 +196,8 @@ class LemonwayValidationModuleFrontController extends ModuleFrontController
             $params = array('transactionMerchantToken'=>Tools::getValue('response_wkToken'));
           
             // Call api to get transaction detail for this order
-            /* @var $kit LemonWayKit */
-            $kit = new LemonWayKit();
+            /* @var $kit PayohKit */
+            $kit = new PayohKit();
 
             try {
                 $res = $kit->getMoneyInTransDetails($params);

@@ -24,7 +24,7 @@
  * International Registered Trademark & Property of PrestaShop SA
 */
 
-class LemonwayConfirmationModuleFrontController extends ModuleFrontController
+class PayohConfirmationModuleFrontController extends ModuleFrontController
 {
     public function postProcess()
     {
@@ -56,7 +56,7 @@ class LemonwayConfirmationModuleFrontController extends ModuleFrontController
         * Since it's an example we are validating the order right here,
         * You should not do it this way in your own module.
         */
-        $payment_status = Configuration::get('LEMONWAY_PENDING_OS'); // Default value for a payment that succeed.
+        $payment_status = Configuration::get('PAYOH_PENDING_OS'); // Default value for a payment that succeed.
         $message = $this->module->l("Order in pending validation payment.");
         // You can add a comment directly into the order so the merchant will see it in the BO.
         

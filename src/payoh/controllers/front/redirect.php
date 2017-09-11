@@ -24,7 +24,7 @@
  * International Registered Trademark & Property of PrestaShop SA
 */
 
-class LemonwayRedirectModuleFrontController extends ModuleFrontController
+class PayohRedirectModuleFrontController extends ModuleFrontController
 {
     protected $supportedLangs = array(
         'da' => 'da',
@@ -45,7 +45,7 @@ class LemonwayRedirectModuleFrontController extends ModuleFrontController
     public function __construct()
     {
         parent::__construct();
-        require_once _PS_MODULE_DIR_ . $this->module->name . '/services/LemonWayKit.php';
+        require_once _PS_MODULE_DIR_ . $this->module->name . '/services/PayohKit.php';
     }
     
     /**
@@ -58,7 +58,7 @@ class LemonwayRedirectModuleFrontController extends ModuleFrontController
         $customer = $this->context->customer;
         
         $secure_key = $this->context->customer->secure_key;
-        $kit = new LemonWayKit();
+        $kit = new PayohKit();
         
         $params = array();
         
@@ -83,20 +83,20 @@ class LemonwayRedirectModuleFrontController extends ModuleFrontController
             //call directkit to get Webkit Token
             $params = array(
                 'wkToken' => $wkToken,
-                'wallet' => LemonWayConfig::getWalletMerchantId(),
+                'wallet' => PayohConfig::getWalletMerchantId(),
                 'amountTot' => number_format((float)$cart->getOrderTotal(true, 3), 2, '.', ''),
                 'amountCom' => $amountCom, //because money is transfered in merchant wallet
                 'comment' => $comment,
-                'returnUrl' => urlencode($this->context->link->getModuleLink('lemonway', 'validation', array(
+                'returnUrl' => urlencode($this->context->link->getModuleLink('payoh', 'validation', array(
                     'register_card' => (int)$this->registerCard(),
                     'action' => 'return',
                     'secure_key' => $secure_key
                 ), true)),
-                'cancelUrl' => urlencode($this->context->link->getModuleLink('lemonway', 'validation', array(
+                'cancelUrl' => urlencode($this->context->link->getModuleLink('payoh', 'validation', array(
                     'action' => 'cancel',
                     'secure_key' => $secure_key
                 ), true)),
-                'errorUrl' => urlencode($this->context->link->getModuleLink('lemonway', 'validation', array(
+                'errorUrl' => urlencode($this->context->link->getModuleLink('payoh', 'validation', array(
                     'action' => 'error',
                     'secure_key' => $secure_key
                 ), true)),
@@ -136,15 +136,15 @@ class LemonwayRedirectModuleFrontController extends ModuleFrontController
 
             $language = $this->getLang();
             Tools::redirect(
-                LemonWayConfig::getWebkitUrl() . '?moneyintoken=' . $moneyInToken . '&p='
-                . urlencode(LemonWayConfig::getCssUrl()) . '&lang=' . $language
+                PayohConfig::getWebkitUrl() . '?moneyintoken=' . $moneyInToken . '&p='
+                . urlencode(PayohConfig::getCssUrl()) . '&lang=' . $language
             );
         } else {
             if (($card = $this->module->getCustomerCard($customer->id)) && $customer->isLogged()) {
                 //Call directkit for MoneyInWithCardId
                 $params = array(
                     'wkToken' => $wkToken,
-                    'wallet'=> LemonWayConfig::getWalletMerchantId(),
+                    'wallet'=> PayohConfig::getWalletMerchantId(),
                     'amountTot' => number_format((float)$cart->getOrderTotal(true, 3), 2, '.', ''),
                     'amountCom'=> $amountCom,
                     'comment' => $comment .  " (Money In with Card Id)",

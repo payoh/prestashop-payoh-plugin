@@ -24,9 +24,9 @@
  * International Registered Trademark & Property of PrestaShop SA
 */
 
-require_once _PS_MODULE_DIR_ . 'lemonway/classes/MoneyOut.php';
-require_once _PS_MODULE_DIR_ . 'lemonway/services/LemonWayKit.php';
-require_once _PS_MODULE_DIR_ . 'lemonway/services/ApiResponse.php';
+require_once _PS_MODULE_DIR_ . 'payoh/classes/MoneyOut.php';
+require_once _PS_MODULE_DIR_ . 'payoh/services/PayohKit.php';
+require_once _PS_MODULE_DIR_ . 'payoh/services/ApiResponse.php';
 
 class AdminMoneyOutController extends ModuleAdminController
 {
@@ -42,7 +42,7 @@ class AdminMoneyOutController extends ModuleAdminController
     public function __construct()
     {
         $this->bootstrap = true;
-        $this->table = 'lemonway_moneyout';
+        $this->table = 'payoh_moneyout';
         $this->identifier = 'id_moneyout';
         $this->className = 'MoneyOut';
         $this->lang = false;
@@ -106,7 +106,7 @@ class AdminMoneyOutController extends ModuleAdminController
 
         if (empty($this->display)) {
             $this->page_header_toolbar_btn['new_moneyout'] = array(
-                'href' => self::$currentIndex.'&addlemonway_moneyout&token=' . $this->token,
+                'href' => self::$currentIndex.'&addpayoh_moneyout&token=' . $this->token,
                 'desc' => $this->l('Do new Money out', null, null, false),
                 'icon' => 'process-icon-new'
             );
@@ -164,7 +164,7 @@ class AdminMoneyOutController extends ModuleAdminController
             );
 
             //Init APi kit
-            $kit = new LemonWayKit();
+            $kit = new PayohKit();
             $apiResponse = $kit->moneyOut($params);
 
             if ($apiResponse->lwError) {
@@ -367,7 +367,7 @@ class AdminMoneyOutController extends ModuleAdminController
     {
         if (is_null($this->walletDetails)) {
             try {
-                $res = $this->module->getWalletDetails(LemonWayConfig::getWalletMerchantId());
+                $res = $this->module->getWalletDetails(PayohConfig::getWalletMerchantId());
             } catch (Exception $e) {
                 Logger::AddLog($e->getMessage());
                 $this->errors[] = Tools::displayError($e->getMessage());
