@@ -28,7 +28,7 @@ if (!defined('_PS_VERSION_')) {
     exit;
 }
 
-require_once 'services/LemonWayConfig.php';
+require_once 'services/PayohConfig.php';
 
 class Payoh extends PaymentModule
 {
@@ -617,7 +617,7 @@ class Payoh extends PaymentModule
         
         $this->smarty->assign(array(
             'module_dir' => $this->_path,
-            'oneclic_allowed' => LemonWayConfig::getOneclicEnabled() && $customer->isLogged(),
+            'oneclic_allowed' => PayohConfig::getOneclicEnabled() && $customer->isLogged(),
             'customer_has_card' => $customer_has_card,
             'card_num' => $card_num,
             'card_type' => $card_type,
@@ -688,7 +688,7 @@ class Payoh extends PaymentModule
     {
         $params = array("wallet"=>$wallet);
 
-        $kit = new LemonWayKit();
+        $kit = new PayohKit();
         try {
             $res = $kit->getWalletDetails($params);
         } catch (Exception $e) {
